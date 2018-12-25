@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+Soccer Jersey Store - Home
+{% endblock %}
+
+{% block body %}
+<!-- Main Store Body -->
+      <div class="row">
+        <div class="col-sm">
+          <h2>Your Shopping History</h2>
+          <p>Items you've bought in the past.</p>
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Item</th>
+                <th scope="col">Team</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Date</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+            <!-- For Each shirt -->
+            {% for i in range(myShirtsLen) %}
+              <tr>
+                <th scope="row">{{ i + 1 }}</th>
+                <td><img src="/static/img/{{ myShirts[i]["image"] }}" width="30px" alt="{{ myShirts[i]["team"] }}" /></td>
+                <td>{{ myShirts[i]["team"] }}</td>
+                <td>{{ myShirts[i]["quantity"] }}</td>
+                <td>{{ myShirts[i]["date"] }}</td>
+                <td><a href="/filter/?id={{ myShirts[i]["id"] }}"><button type="button" class="btn btn-warning">Buy Again</button></a></td>
+              </tr>
+            </tbody>
+            {% endfor %}
+            <tfoot>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock %}
